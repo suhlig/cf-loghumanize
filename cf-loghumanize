@@ -3,6 +3,7 @@
   source,
   log_level: .log_level | ascii_upcase,
   message, loc: [.file, .lineno | tostring] | join(":"),
+  description: .data.description,
   stack_trace: (
     if .data.stack_trace then
       .data.stack_trace | join("\n ")
