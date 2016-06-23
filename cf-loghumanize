@@ -1,11 +1,12 @@
 {
-  timestamp: .timestamp|todate,
+  timestamp: .timestamp | todate,
   source,
-  message, loc: [.file, .lineno|tostring] | join(":"),
-  stack_trace: (if .data.stack_trace then
-           .data.stack_trace | join("\n ")
-         else
-           null
-         end
+  message, loc: [.file, .lineno | tostring] | join(":"),
+  stack_trace: (
+    if .data.stack_trace then
+      .data.stack_trace | join("\n ")
+    else
+      ""
+    end
   ),
 } | join(" - ")
