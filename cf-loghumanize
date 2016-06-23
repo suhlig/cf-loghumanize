@@ -1,6 +1,7 @@
 {
   timestamp: .timestamp | todate,
   source,
+  log_level: .log_level | ascii_upcase,
   message, loc: [.file, .lineno | tostring] | join(":"),
   stack_trace: (
     if .data.stack_trace then
