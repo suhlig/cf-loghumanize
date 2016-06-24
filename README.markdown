@@ -7,7 +7,7 @@ Requires [jq](https://stedolan.github.io/jq/).
 # Invocation
 
 ```
-cat bits-service.log | jq -rf path/to/cf-loghumanize
+cat bits-service.log | path/to/cf-loghumanize
 ```
 
 # Alternatives

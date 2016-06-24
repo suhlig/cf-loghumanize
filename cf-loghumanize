@@ -1,4 +1,6 @@
-{
+#!/bin/bash
+
+jq -r '{
   timestamp: .timestamp | todate,
   source,
   log_level: .log_level | ascii_upcase,
@@ -11,4 +13,4 @@
       ""
     end
   ),
-} | join(" - ")
+} | join(" - ")'

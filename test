@@ -1,1 +1,22 @@
-cat bits-service.log | jq -rf cf-loghumanize
+#!/usr/bin/env bash
+
+# copied from https://github.com/p8952/bocker
+exit_code=0
+reset="$(tput sgr0)"
+
+for t in tests/test_*; do
+  bash tests/setup > /dev/null 2>&1
+
+  bash "$t" > /dev/null 2>&1
+
+  if [[ $? == 0 ]]; then
+    echo -e "$(tput setaf 2)PASSED${reset} : $t"
+  else
+    echo -e "$(tput setaf 1)FAILED${reset} : $t"
+    exit_code=1
+  fi
+
+  bash tests/teardown > /dev/null 2>&1
+done
+
+exit "$exit_code"

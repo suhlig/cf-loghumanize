@@ -1,0 +1,3 @@
+LINE_COUNT=$(cat tests/bits-service.log | ./cf-loghumanize | wc -l)
+
+[[ "${LINE_COUNT}" -eq 97 ]]
